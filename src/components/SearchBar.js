@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './SearchBar.css'
 
 const SearchBar = ({ onSubmit }) => {
 
@@ -6,18 +7,19 @@ const SearchBar = ({ onSubmit }) => {
 
   const handleFormSubmit = (e) =>{
     e.preventDefault();
-    console.log('Submited')
-    onSubmit('cars');
+    //console.log('Submited')
+    onSubmit(term);
   }
 
   const handleChange = (e)=>{
-    setTerm(e.target.value.replace(/[a-z]/, '')); // <= This is the way to use regular expresions
+    //setTerm(e.target.value.replace(/[a-z]/, '')); // <= This is the way to use regular expresions
+    setTerm(e.target.value);
   }
 
   return (
-    <div>
+    <div className='search-bar'>
       <form onSubmit={handleFormSubmit} action="">
-        Confirm your search: {term}
+        <label htmlFor="">Your search:</label> 
         <input value={term} onChange={handleChange} type="text"  />
         {term.length<3 && 'Your term must be longer'}
       </form>
